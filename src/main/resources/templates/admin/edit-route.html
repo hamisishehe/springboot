@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8" />
+    <title>TS|</title>
+
+    <!-- Site favicon -->
+    <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            th:href="@{/vendors/images/apple-touch-icon.png}"
+    />
+    <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            th:href="@{/vendors/images/favicon-32x32.png}"
+    />
+    <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            th:href="@{/vendors/images/favicon-16x16.png}"
+    />
+
+    <!-- Mobile Specific Metas -->
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- Google Font -->
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendors/styles/core.css}" />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            th:href="@{/vendors/styles/icon-font.min.css}"
+    />
+    <link rel="stylesheet" type="text/css" th:href="@{/vendors/styles/style.css}" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
+    ></script>
+    <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258"
+            crossorigin="anonymous"
+    ></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-GBZ3SGGX85");
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+
+<body>
+<div class="pre-loader">
+    <div class="pre-loader-box">
+        <div class="loader-logo">
+            <img src="vendors/images/deskapp-logo.svg" alt="" />
+        </div>
+        <div class="loader-progress" id="progress_div">
+            <div class="bar" id="bar1"></div>
+        </div>
+        <div class="percent" id="percent1">0%</div>
+        <div class="loading-text">Loading...</div>
+    </div>
+</div>
+
+<div class="header">
+    <div class="header-left">
+        <div class="menu-icon bi bi-list"></div>
+
+    </div>
+    <div class="header-right">
+        <div class="dashboard-setting user-notification">
+            <div class="dropdown">
+                <a
+                        class="dropdown-toggle no-arrow"
+                        href="javascript:;"
+                        data-toggle="right-sidebar"
+                >
+                    <i class="dw dw-settings2"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="user-info-dropdown">
+            <div class="dropdown">
+                <a
+                        class="dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-toggle="dropdown"
+                >
+							<span class="user-icon">
+								<img src="vendors/images/photo1.jpg" alt="" />
+							</span>
+
+                </a>
+                <div
+                        class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+                >
+
+
+                    <a class="dropdown-item" th:href="@{/admin/logout}"
+                    ><i class="dw dw-logout"></i> Log Out</a
+                    >
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="left-side-bar">
+    <div class="brand-logo">
+        <a href="dashboard.html">
+            <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
+            <h3 class="text-white text-center">TS</h3>
+
+        </a>
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+            <i class="ion-close-round"></i>
+        </div>
+    </div>
+    <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+            <ul id="accordion-menu">
+
+                <li>
+                    <a th:href="@{/admin/dashboard}" class="dropdown-toggle no-arrow">
+								<span class="micon bi bi-house"></span
+                                ><span class="mtext">Home</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+								<span class="micon bi bi-archive"></span
+                                ><span class="mtext"> Bus Details </span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a th:href="@{/admin/addbus}">Add Bus</a></li>
+                        <li><a th:href="@{/admin/viewbus}">View Buses</a></li>
+
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+								<span class="micon bi bi-command"></span
+                                ><span class="mtext">Routes</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a th:href="@{/admin/addroute}">Add Routes</a></li>
+                        <li><a th:href="@{/admin/viewroute}">View Routes</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+								<span class="micon bi bi-file-earmark-text"></span
+                                ><span class="mtext">Schedule</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a th:href="@{/admin/schedule}">Schedule</a></li>
+                        <li><a th:href="@{/admin/viewschedule}">View Schedule</a></li>
+                    </ul>
+                </li>
+
+
+
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <div class="sidebar-small-cap">Extra</div>
+                </li>
+                <li>
+                    <a href="javascript:;" class="dropdown-toggle">
+								<span class="micon bi bi-person"></span
+                                ><span class="mtext">Users</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a th:href="@{/admin/adduser}">Add New User</a></li>
+                        <li><a th:href="@{/admin/viewusers}">All Users</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a
+                            th:href="@{/admin/profile}"
+
+                            class="dropdown-toggle no-arrow"
+                    >
+                        <span class="micon bi bi-person-fill"></span>
+                        <span class="mtext"
+                        >Profile
+									<img src="vendors/images/coming-soon.png" alt="" width="25"
+                                    /></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-menu-overlay"></div>
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Add New Route</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pd-20 bg-white border-radius-4 box-shadow mb-30 ">
+
+
+
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-4 col-md-7 col-sm-12 mb-30">
+
+<!--                        <div th:if="${successMessage}" class="alert alert-success" role="alert">-->
+<!--                            <span th:text="${successMessage}"></span>-->
+<!--                        </div>-->
+
+                        <form th:action="@{/admin/updateroute}" th:object="${route}" method="post">
+                            <input type="hidden" th:field="*{id}" />
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">Bus Information</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <div class="form-group row">
+                                        <label class="col-sm-12 col-md-2 col-form-label">Bus Number Plate</label>
+                                        <div class="col-sm-12 col-md-10">
+                                            <label>
+                                                <select class="custom-select col-12" >
+                                                    <option th:each="bus : ${buses}" th:value="${bus.number_plate}" th:text="${bus.number_plate}"></option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">From</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <select class="custom-select col-12" th:field="*{start_location}">
+                                        <option value="Humanity">Humanity</option>
+                                        <option value="SabaSaba">SabaSaba</option>
+                                        <option value="Nanenane">Nanenane</option>
+                                        <option value="Informatics">Informatics</option>
+                                        <option value="Ng'ong'ona">Ng'ong'ona</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">To</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <select class="custom-select col-12" th:field="*{end_location}">
+                                    <option value="Humanity">Humanity</option>
+                                        <option value="SabaSaba">SabaSaba</option>
+                                        <option value="Nanenane">Nanenane</option>
+                                        <option value="Informatics">Informatics</option>
+                                        <option value="Ng'ong'ona">Ng'ong'ona</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                Update Route
+                            </button>
+
+
+
+                        </form>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+        <div class="footer-wrap pd-20 mb-20 card-box">
+
+            <a href="" target="_blank"
+            ></a
+            >
+        </div>
+    </div>
+</div>
+<!-- welcome modal start -->
+
+<!-- welcome modal end -->
+<!-- js -->
+<script th:src="@{/vendors/scripts/core.js}"></script>
+<script th:src="@{/vendors/scripts/script.min.js}"></script>
+<script th:src="@{/vendors/scripts/process.js}"></script>
+<script th:src="@{/vendors/scripts/layout-settings.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/responsive.bootstrap4.min.js}"></script>
+<!-- buttons for Export datatable -->
+<script th:src="@{/src/plugins/datatables/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/buttons.print.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/buttons.html5.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/buttons.flash.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/pdfmake.min.js}"></script>
+<script th:src="@{/src/plugins/datatables/js/vfs_fonts.js}"></script>
+<!-- Datatable Setting js -->
+<script th:src="@{/vendors/scripts/datatable-setting.js}"></script>
+<!-- Google Tag Manager (noscript) -->
+<noscript
+><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) -->
+</body>
+</html>
+

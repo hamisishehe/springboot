@@ -4,6 +4,7 @@ package com.ahsoftware.transport.Service;
 import com.ahsoftware.transport.Model.Route;
 import com.ahsoftware.transport.Model.Schedule;
 import com.ahsoftware.transport.Repository.RouteRepository;
+import com.ahsoftware.transport.Repository.ScheduleRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -20,6 +21,8 @@ public class RouteService {
     @Autowired
     private RouteRepository routeRepository;
 
+    @Autowired
+    private ScheduleRepository scheduleRepository;
 
 
     public List<Route> getAllRoutes() {

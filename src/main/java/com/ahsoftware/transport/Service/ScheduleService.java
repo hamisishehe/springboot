@@ -30,4 +30,10 @@ public class ScheduleService {
     public void deleteSchedule(Long id) {
         scheduleRepository.deleteById(id);
     }
+
+
+
+    public List<Schedule> findSchedulesByRouteStartAndEnd(String startLocation, String endLocation) {
+        return scheduleRepository.findByRouteStartLocationAndRouteEndLocation(startLocation, endLocation);
+    }
 }

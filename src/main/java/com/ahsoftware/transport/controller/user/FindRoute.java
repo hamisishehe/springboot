@@ -3,6 +3,7 @@ package com.ahsoftware.transport.controller.user;
 
 import com.ahsoftware.transport.Model.Route;
 import com.ahsoftware.transport.Model.Schedule;
+import com.ahsoftware.transport.Repository.ScheduleRepository;
 import com.ahsoftware.transport.Service.BusService;
 import com.ahsoftware.transport.Service.RouteService;
 import com.ahsoftware.transport.Service.UserServiceImpl;
@@ -26,6 +27,10 @@ public class FindRoute {
     private RouteService routeService;
 
     @Autowired
+    private ScheduleRepository scheduleRepository;
+
+
+    @Autowired
     private UserServiceImpl userService;
 
     @GetMapping("/user/find-route")
@@ -41,6 +46,23 @@ public class FindRoute {
         return "user/find-route"; // This should match the name of your Thymeleaf template for the admin dashboard
     }
 
+
+
+    @PostMapping("/user/find-route")
+    public String searchRoutes(@RequestParam("start_location") String startLocation,
+                               @RequestParam("end_location") String endLocation,
+                               Model model) {
+        List<Schedule> schedules = scheduleRepository.findByRouteStartLocationAndRouteEndLocation(startLocation, endLocation);
+        if (schedules.isEmpty()) {
+            model.addAttribute("message", "No routes found for the given locations.");
+            return "user/find-route";
+        } else {
+            model.addAttribute("schedules", schedules);
+            return "user/find-route";
+        }
+
+
+    }
 
 
 

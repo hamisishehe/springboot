@@ -202,7 +202,7 @@
                 <div class="row justify-content-center">
 
                    <div class="col-md-6">
-                       <form>
+                       <form th:action="@{/user/find-route}" method="post">
                            <div class="form-group row">
                                <label class="col-sm-12 col-md-2 col-form-label">From</label>
                                <div class="col-sm-12 col-md-10">
@@ -240,19 +240,28 @@
                        <br>
                        <div class="container">
                            <h2>Route Search Results</h2>
-                           <p>Showing schedules from <strong th:text="${startLocation}"></strong> to <strong th:text="${endLocation}"></strong>:</p>
+
+                           <div th:if="${message}">
+                               <div class="alert alert-warning" role="alert">
+                                   <p th:text="${message}"></p>
+                               </div>
+                           </div>
 
                            <table class="table">
                                <thead>
                                <tr>
-                                   <th>Departure Time</th>
+                                   <th>Start Location</th>
+                                   <th>End Location</th>
                                    <th>Arrival Time</th>
+                                   <th>Departure Time</th>
                                </tr>
                                </thead>
                                <tbody>
                                <tr th:each="schedule : ${schedules}">
-                                   <td th:text="${schedule.departureTime}"></td>
+                                   <td th:text="${schedule.route.start_location}"></td>
+                                   <td th:text="${schedule.route.end_location}"></td>
                                    <td th:text="${schedule.arrivalTime}"></td>
+                                   <td th:text="${schedule.departureTime}"></td>
                                </tr>
                                </tbody>
                            </table>

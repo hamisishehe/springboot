@@ -3,6 +3,7 @@ package com.ahsoftware.transport.controller.admin;
 
 import com.ahsoftware.transport.Model.Bus;
 import com.ahsoftware.transport.Model.Route;
+import com.ahsoftware.transport.Model.Schedule;
 import com.ahsoftware.transport.Service.BusService;
 import com.ahsoftware.transport.Service.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,4 +69,21 @@ public class RouteController {
         return "redirect:/admin/viewroute";
     }
 
+
+//    @PostMapping("/find")
+//    public String findRoutes(@RequestParam("start_location") String startLocation,
+//                             @RequestParam("end_location") String endLocation,
+//                             Model model) {
+//        List<Schedule> schedules = routeService.findSchedulesByLocations(startLocation, endLocation);
+//        model.addAttribute("schedules", schedules);
+//        model.addAttribute("startLocation", startLocation);
+//        model.addAttribute("endLocation", endLocation);
+//        return "find-results"; // Assuming find-results.html is your template to display search results
+//    }
+
+
+
+
+
 }
+
